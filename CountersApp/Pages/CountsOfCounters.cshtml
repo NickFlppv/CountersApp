@@ -1,0 +1,25 @@
+﻿@page
+@model CountersApp.Pages.Counters
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    @Model.Message
+    <div>
+        @foreach (var counter in @Model.CountersList)
+        {
+            <div>@counter.Id  @counter.Key  @counter.Value</div>
+        }
+    </div>
+</div>
+</body>
+</html>
