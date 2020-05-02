@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CountersApp.Pages
 {
-    public class Counters : PageModel
+    public class CountersPage : PageModel
     {
         private readonly ICountersRepository _countersRepository;
 
-        public Counters(ICountersRepository countersRepository)
+        public CountersPage(ICountersRepository countersRepository)
         {
             _countersRepository = countersRepository;
         }
-        public string Message { get; private set; } = "PageModel in C#";
+        public string Message { get; private set; } = "";
         public IQueryable<Counter> CountersList { get; private set; }
 
         public void OnGet()

@@ -1,5 +1,5 @@
 ﻿@page
-@model CountersApp.Pages.Counters
+@model CountersApp.Pages.CountersPage
 
 @{
     Layout = null;
@@ -15,9 +15,10 @@
 <div>
     @Model.Message
     <div>
+        <div>Id Key Value</div>
         @foreach (var counter in @Model.CountersList)
         {
-            <div>@counter.Id  @counter.Key  @counter.Value</div>
+            <div>@counter.Id @counter.Key @counter.Value</div>
         }
     </div>
 </div>

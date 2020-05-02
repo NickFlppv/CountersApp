@@ -11,11 +11,16 @@ namespace CountersApp.Pages
         {
             _countersRepository = countersRepository;
         }
-        public string Message { get; private set; } = "PageModel in C#";
+        public string Message { get; private set; } = "";
 
         public void OnGet()
         {
-            Message += $" Page = AddingCounter";
+            Message += $"Page = AddingCounter";
+        }
+
+        public void OnPost(Counter counter)
+        {
+            _countersRepository.AddCounter(counter);
         }
     }
 }
