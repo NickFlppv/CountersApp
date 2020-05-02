@@ -1,0 +1,32 @@
+﻿@model IEnumerable<(int, int, int)>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+    <table>
+        <tr>
+            <th>Key</th>
+            <th>Count</th>
+            <th>CountMoreThanOne</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Item1</td>
+                <td>@item.Item2</td>
+                <td>@item.Item3</td>
+            </tr>
+        }
+    </table>
+    <a href="/home">Home</a>
+</div>
+</body>
+</html>

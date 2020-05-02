@@ -1,4 +1,5 @@
 ﻿using CountersApp.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CountersApp.Pages
@@ -12,15 +13,22 @@ namespace CountersApp.Pages
             _countersRepository = countersRepository;
         }
         public string Message { get; private set; } = "";
-
+        
+        [BindProperty]
+        public Counter Counter { get; set; }
         public void OnGet()
         {
-            Message += $"Page = AddingCounter";
         }
 
-        public void OnPost(Counter counter)
+        public IActionResult OnPost()
         {
-            _countersRepository.AddCounter(counter);
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            Message = $"New Counter: Key = {Counter.Key} Value = {Counter.Value}";
+            _countersRepository.AddCounter(Counter);
+            return Redirect("counterspage");
         }
     }
 }

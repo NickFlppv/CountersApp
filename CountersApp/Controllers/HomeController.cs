@@ -15,7 +15,9 @@ namespace CountersApp.Controllers
 
         public IActionResult Index() => View();
 
-        [HttpGet("{key}")]
-        public IActionResult CountsOfCounters(int key) => View(_countersRepository.GetCounts(key).ToTuple());
+        public IActionResult CountMoreThanOne()
+        {
+            return View(_countersRepository.GetCounts());
+        }
     }
 }

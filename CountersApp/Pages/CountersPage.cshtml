@@ -13,14 +13,23 @@
 </head>
 <body>
 <div>
-    @Model.Message
-    <div>
-        <div>Id Key Value</div>
-        @foreach (var counter in @Model.CountersList)
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+        @foreach (var item in @Model.CountersList)
         {
-            <div>@counter.Id @counter.Key @counter.Value</div>
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+            </tr>
         }
-    </div>
+    </table>
+    <a href="addingcounter">Add new counter</a>
+    <a href="/home">Home</a>
 </div>
 </body>
 </html>

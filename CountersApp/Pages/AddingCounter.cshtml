@@ -1,5 +1,6 @@
 ﻿@page
 @model CountersApp.Pages.AddingCounter
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = null;
@@ -14,6 +15,12 @@
 <body>
 <div>
     @Model.Message
+    <form method="post">
+        <input asp-for="Counter.Key" type="number"/>
+        <input asp-for="Counter.Value" type="number">
+        <button type="submit">Add counter</button>
+    </form>
+    <a href="/home">Home</a>
 </div>
 </body>
 </html>
