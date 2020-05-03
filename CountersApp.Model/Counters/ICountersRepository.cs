@@ -7,7 +7,7 @@ namespace CountersApp.Model
     {
         IQueryable<Counter> GetCounters();
         int AddCounter(Counter counter);
-        (int, int) GetCounts(int key);
-        IQueryable<(int, int)> GetCounts();
+        (int, int) GetCountsByKey(int key);
+        IEnumerable<(int, int, int)> GetCounts();
     }
 }

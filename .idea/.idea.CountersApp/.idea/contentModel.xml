@@ -16,6 +16,11 @@
         <e p="Infrastructure" t="Include">
           <e p="MigrationsManager.cs" t="Include" />
         </e>
+        <e p="Migrations" t="Include">
+          <e p="20200502180624_InitialMigration.cs" t="Include" />
+          <e p="20200502180624_InitialMigration.Designer.cs" t="Include" />
+          <e p="DomainContextModelSnapshot.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -26,8 +31,8 @@
         <e p="Pages" t="Include">
           <e p="AddingCounter.cshtml" t="Include" />
           <e p="AddingCounter.cshtml.cs" t="Include" />
-          <e p="Counters.cshtml" t="Include" />
-          <e p="Counters.cshtml.cs" t="Include" />
+          <e p="CountersPage.cshtml" t="Include" />
+          <e p="CountersPage.cshtml.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
@@ -36,8 +41,13 @@
         <e p="Startup.cs" t="Include" />
         <e p="Views" t="Include">
           <e p="Home" t="Include">
+            <e p="CountMoreThanOne.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
           </e>
+        </e>
+        <e p="wwwroot" t="Include">
+          <e p="CountMoreThanOne.css" t="Include" />
+          <e p="CountMoreThanOne.html" t="Include" />
         </e>
       </e>
       <e p="CountersApp.Model" t="IncludeRecursive">

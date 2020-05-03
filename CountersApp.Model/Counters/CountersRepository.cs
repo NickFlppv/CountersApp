@@ -20,12 +20,25 @@ namespace CountersApp.Model
             return _context.SaveChanges();
         }
 
-        public IQueryable<(int, int)> GetCounts()
+        public IEnumerable<(int, int, int)> GetCounts()
         {
-            throw new System.NotImplementedException();
+            var filteredCounts = _context.Counters
+                .Where(c => c.Value > 1)
+                .GroupBy(c => c.Key, c => c.Value)
+                .Select(group => new {Key = group.Key, CountMoreThanOne = group.Count()}).ToList();
+            var counts = _context.Counters
+                .GroupBy(c => c.Key, c => c.Value)
+                .Select(group => new {Key = group.Key, Count = group.Count()}).ToList();
+            return counts
+                .Join(
+                filteredCounts, 
+                first => first.Key, 
+                second => second.Key,
+                (first,second) => new {first.Key, first.Count, second.CountMoreThanOne})
+                .Select(j => (j.Key, j.Count, j.CountMoreThanOne));
         }
 
-        public (int, int) GetCounts(int key) =>
+        public (int, int) GetCountsByKey(int key) =>
             (_context.Counters.Count(c => c.Key == key),
                 _context.Counters.Count(c => c.Value > 1));
     }
