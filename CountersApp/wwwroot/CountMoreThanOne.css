@@ -1,0 +1,27 @@
+﻿#table{
+    display: flex;
+    width: 30vw;
+    height: 30vh;
+    flex-wrap: wrap;
+}
+
+.table-header{
+    display: flex;
+    justify-content: space-around;
+    width: 30vw;
+    height: 10vh;
+}
+
+.table-row{
+    display: flex;
+    justify-content: space-around;
+    width:30vw;
+    height: 10vh;
+}
+
+.table-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+}

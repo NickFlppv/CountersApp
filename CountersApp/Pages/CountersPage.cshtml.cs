@@ -19,7 +19,7 @@ namespace CountersApp.Pages
         public void OnGet()
         {
             Message += $" Page = Counters";
-            CountersList = _countersRepository.GetCounters();
+            CountersList = _countersRepository.GetCounters().OrderBy(c => c.Key);
         }
     }
 }

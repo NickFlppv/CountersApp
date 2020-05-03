@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counts</title>
+    <link rel="stylesheet" href="CountMoreThanOne.css">
+</head>
+<body>
+<div class="table-header">
+    <span class="table-item">
+    Key
+    </span>
+    <span class="table-item">
+    Count
+    </span>
+    <span class="table-item">
+    Count more than one
+    </span>
+</div>
+<div id="table"></div>
+<div>
+    <div>Current page: <span id="currentPage"></span></div>
+    <label for="page">Choose page</label>
+    <input id="page" type="number" onchange="changePage(this.value)"/>
+</div>
+<div>
+    <a href="/home/index">Home</a>
+</div>
+</body>
+</html>
+
+<script>
+    fillTable(sessionStorage.page);
+
+    function fillTable(page = 1) {
+        setPageCounter(page);
+        const url = "/counts" + window.location.search;
+        const table = document.getElementById("table");
+        const options = {
+            method: "GET",
+            headers: {},
+        };
+        fetch(url, options)
+            .then(response => response.json())
+            .then(body => {
+                table.innerHTML = "";
+                body.map(element => {
+                    table.innerHTML += `<div class="table-row"><span class="table-item">${element.Key}</span><span class="table-item">${element.Count}` +
+                    `</span><span class="table-item">${element.CountMoreThanOne}</span></div>`;
+                })
+            });
+    }
+
+    function setPageCounter(page) {
+        const currentPage = document.getElementById("currentPage");
+        currentPage.innerText = page;
+    }
+
+    const changePage = page => {
+        sessionStorage.page = page;
+        window.location.search = `?page=${page}`;
+    };
+</script>
